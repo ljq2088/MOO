@@ -1,5 +1,5 @@
-import sys
-sys.path.append('/home/ljq/code/MOO')
+#import sys
+#sys.path.append('/home/ljq/code/MOO')
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.pyplot as plt
