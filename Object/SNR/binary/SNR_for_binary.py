@@ -1,6 +1,7 @@
 import sys
 import os
-
+import sys
+sys.path.append('/home/ljq/code/MOO')
 import matplotlib.pyplot as plt
 #%matplotlib inline
 import numpy as np
@@ -11,13 +12,15 @@ from utils.PSD import PSD_L_lambda
 from para_sb import *
 for i in np.arange(0,m):
     for j in np.arange(0,n):
-        PSD_seq=PSD_L_lambda(freq_bin,L,l)
+        print(L,l)
+        PSD_seq=PSD_L_lambda(freq_bin,[L,l])
         SNRtemp = inner_prod(h_f,h_f,PSD_seq,df)
         SNR[i][j]=np.sqrt(SNRtemp)
         
         l=l+dl
     l=l1
-    L=L+dL 
+    L=L+dL
+    
 
 
-np.savetxt("/home/ljq/code/MOO/results/SNR/binary/SNR_binary.txt",SNR,fmt="%50.50f",delimiter=" ")
+np.savetxt("/home/ljq/code/MOO/results/SNR/binary/SNR_binary3.txt",SNR,fmt="%50.50f",delimiter=" ")

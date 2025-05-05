@@ -1,8 +1,9 @@
 import sys
 import os
-
+import sys
+sys.path.append('/home/ljq/code/MOO')
 import matplotlib.pyplot as plt
-%matplotlib inline
+#%matplotlib inline
 import numpy as np
 
 from few.trajectory.inspiral import EMRIInspiral
@@ -37,7 +38,8 @@ from para_se import *
 
 for i in np.arange(0,m):
     for j in np.arange(0,n):
-        PSD_seq=PSD_L_lambda(freq,L,l)
+        print(L,l)
+        PSD_seq=PSD_L_lambda(freq,[L,l])
         SNRtemp = inner_prod(h_local,h_local,PSD_seq,df)
         SNR[i][j]=np.sqrt(SNRtemp)
         
@@ -45,5 +47,5 @@ for i in np.arange(0,m):
     l=l1
     L=L+dL    
 
-np.savetxt("/home/ljq/code/MOO/results/SNR/EMRI/SNR_EMRI.txt", SNR, fmt="%50.50f", delimiter=" ")
+np.savetxt("/home/ljq/code/MOO/results/SNR/EMRI/SNR_EMRI3.txt", SNR, fmt="%50.50f", delimiter=" ")
 

@@ -1,6 +1,7 @@
 import sys
 import os
-
+import sys
+sys.path.append('/home/ljq/code/MOO')
 import matplotlib.pyplot as plt
 #%matplotlib inline
 import numpy as np
@@ -44,11 +45,11 @@ n_f = len(freq_bin)
 h_f = htilde(freq_bin,eps_GR,pars)
 
 #确定参数范围计算SNR
-L1=1.0*10**8
+L1=5.0*10**8
 L2=10.0*10**9
 dL=1.0*10**8
 l1=200.0
-l2=1200.0
+l2=1600.0
 dl=50.0
 m=0
 n=0

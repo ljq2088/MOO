@@ -1,4 +1,6 @@
 from scipy.optimize import brentq
+import sys
+sys.path.append('/home/ljq/code/MOO')
 from config.config import config
 from utils.zeropoint import *
 from utils.Lumi_redshift import *
@@ -16,10 +18,10 @@ from waveform.EMRI_waveform import *
 #参数范围
 L1=5.0*10**8
 L2=10.0*10**9
-dL=5.0*10**8
+dL=1.0*10**8
 l1=200.0
-l2=1200.0
-dl=100.0
+l2=1600.0
+dl=50.0
 #红移范围
 z1=0.001
 z2=4
@@ -70,7 +72,7 @@ def SNR_L_l(L,l,z):
     df=waveform[1,1]-waveform[0,1]
 
     # PSD=PSD_Lisa(fseq)
-    PSD=PSD_L_lambda(fseq,L,l)
+    PSD=PSD_L_lambda(fseq,[L,l])
     SNR2 = inner_prod(h_f,h_f,PSD,df)
     return np.sqrt(SNR2)
 

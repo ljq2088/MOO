@@ -3,6 +3,8 @@ import os
 import matplotlib.pyplot as plt
 #%matplotlib inline
 import numpy as np
+import sys
+sys.path.append('/home/ljq/code/MOO')
 from config.config import config
 from waveform.binary_waveform import *
 from utils.inner_prod import inner_prod
@@ -54,10 +56,10 @@ h_f = htilde(freq_bin,eps_GR,pars)
 #准备波形数据
 L1=5.0*10**8
 L2=10.0*10**9
-dL=5.0*10**8
+dL=1.0*10**8
 l1=200.0
-l2=1200.0
-dl=100.0
+l2=1600.0
+dl=50.0
 
 itr=100000
 e=1
@@ -107,13 +109,13 @@ def SNR_binary_redshift(L,l,z):
     delta_f = 1/(n_t*delta_t)         # Extract sampling frequency
     freq_bin = np.arange(fmin,f_max,delta_f)     # Extract frequency series
     
-    if np.any(PSD_L_lambda(freq_bin,L,l) <= 0):
+    if np.any(PSD_L_lambda(freq_bin,[L,l]) <= 0):
         print("序列中有小于零的值")
     
     
     n_f = len(freq_bin)       
     h=htilde(freq_bin,eps_GR,pars)
-    PSD=PSD_L_lambda(freq_bin,L,l)
+    PSD=PSD_L_lambda(freq_bin,[L,l])
 
   
 

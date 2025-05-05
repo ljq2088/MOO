@@ -43,9 +43,9 @@ for L in np.arange(L1,L2,dL):
             zseq[i][j]=zero_point
             print('done')
         j=j+1
-    np.savetxt("/home/ljq/code/MOO/results/redshift/EMRI/redshift_EMRI.txt",zseq,fmt="%50.50f",delimiter=" ")
+    np.savetxt("/home/ljq/code/MOO/results/redshift/EMRI/redshift_EMRI3.txt",zseq,fmt="%50.50f",delimiter=" ")
     j=0
     i=i+1
-np.savetxt("/home/ljq/code/MOO/results/redshift/EMRI/redshift_EMRI.txt",zseq,fmt="%50.50f",delimiter=" ")
+np.savetxt("/home/ljq/code/MOO/results/redshift/EMRI/redshift_EMRI3.txt",zseq,fmt="%50.50f",delimiter=" ")
 
 

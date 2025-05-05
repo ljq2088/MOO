@@ -28,7 +28,7 @@ for i in np.arange(len(L)):
         f=lambda x:SNR_binary_redshift(L[i],l[j],x)-SNR_threshold
         print(f(z1+0.1*z1),f(z2-0.1*z2))
 
-        zeropoint,_=brentq(f,z1+0.1*z1,z2-0.1*z2)
+        zeropoint,_=brentq(f,z1+0.1*z1,z2-0.1*z2,full_output=True)
         
         
         
@@ -36,5 +36,5 @@ for i in np.arange(len(L)):
             zseq[i][j]=zeropoint
             print('done')
         
-    np.savetxt("/home/ljq/code/Multi-Obj-Opt2.0/results/redshift/binary/redshift_binary_2.txt",zseq,fmt="%50.50f",delimiter=" ")
-np.savetxt("/home/ljq/code/Multi-Obj-Opt2.0/results/redshift/binary/redshift_binary_2.txt",zseq,fmt="%50.50f",delimiter=" ")
+    np.savetxt("/home/ljq/code/Multi-Obj-Opt2.0/results/redshift/binary/redshift_binary_3.txt",zseq,fmt="%50.50f",delimiter=" ")
+np.savetxt("/home/ljq/code/Multi-Obj-Opt2.0/results/redshift/binary/redshift_binary_3.txt",zseq,fmt="%50.50f",delimiter=" ")

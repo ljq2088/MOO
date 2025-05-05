@@ -6,15 +6,16 @@ from config.config import config
 from utils.inner_prod import inner_prod
 from utils.PSD import PSD_L_lambda
 #准备波形数据
-data=np.loadtxt(r'/home/ljq/code/MOO/Workspace/waveformAAK_PN5.txt')
-freq=data[1:len(data[:,1]),1]
-h_local=data[1:len(data[:,0]),0]
-L1=1*10**8
-L2=10*10**9
-dL=1*10**8
-l1=200
-l2=1200
-dl=50
+loaded_data = np.load("/home/ljq/code/MOO/Object/SNR/EMRI/FEW.npz")
+freq = loaded_data["freq"]
+h_local = loaded_data["h_local"]
+
+L1=5.0*10**8
+L2=10.0*10**9
+dL=1.0*10**8
+l1=200.0
+l2=1600.0
+dl=50.0
 #构造二维矩阵存储SNR
 m=0
 n=0
