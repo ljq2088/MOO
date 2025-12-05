@@ -44,26 +44,7 @@ n_f = len(freq_SNR_binary)
 h_SNR_binary = htilde(freq_SNR_binary,eps_GR,pars)
 
 def SNR_binary_1(paras,PSD,**kwargs):
-    """ 
-    Return 2D array of SNR for different parameters
-
-    Parameters:
-    -----------
-    Armlength: L
-    L1: float
-        lower bound for L
-    L2: float
-        upper bound for L
-    dL: float
-        step size for L
-    wavelength: l
-    l1: float
-        lower bound for l
-    l2: float            
-        upper bound for l    
-    dl: float
-        step size for l
-    """
+    
     
     df=freq_SNR_binary[1]-freq_SNR_binary[0]
    
@@ -75,33 +56,13 @@ def SNR_binary_1(paras,PSD,**kwargs):
   
     return SNR
 
-def SNR_binary_2(paras,PSD,**kwargs):
-    """ 
-    Return 2D array of SNR for different parameters
+# def SNR_binary_1(paras,PSD,**kwargs):
 
-    Parameters:
-    -----------
-    Armlength: L
-    L1: float
-        lower bound for L
-    L2: float
-        upper bound for L
-    dL: float
-        step size for L
-    wavelength: l
-    l1: float
-        lower bound for l
-    l2: float            
-        upper bound for l    
-    dl: float
-        step size for l
-    """
     
-    
-    df=freq_SNR_binary[1]-freq_SNR_binary[0]
+#     df=freq_SNR_binary[1]-freq_SNR_binary[0]
    
-    PSD_seq=PSD(freq_SNR_binary,paras)
-    SNRtemp = inner_prod(h_SNR_binary,h_SNR_binary,PSD_seq,df)
-    SNR=np.sqrt(SNRtemp)
+#     PSD_seq=PSD(freq_SNR_binary,paras)
+#     SNRtemp = inner_prod(h_SNR_binary,h_SNR_binary,PSD_seq,df)
+#     SNR=np.sqrt(SNRtemp)
 
-    return SNR
+#     return SNR

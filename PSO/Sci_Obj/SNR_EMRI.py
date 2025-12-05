@@ -1,4 +1,7 @@
 import os
+import sys
+sys.path.append('/home/ljq/code/MOO')
+sys.path.append('/home/ljq/code/MOO/PSO')
 import numpy as np
 import numpy as np
 import matplotlib.pyplot as plt
@@ -6,7 +9,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
 from scipy.interpolate import griddata
-from code.MOO.PSO.PSO_func import *
+from PSO_func import *
 from utils.inner_prod import *
 from utils.Lumi_redshift import *  
 from utils.PSD import *
@@ -55,28 +58,9 @@ else:
 freq_SNR_EMRI=data[1:len(data[:,1]),1]
 h_SNR_EMRI=data[1:len(data[:,0]),0]
 
-
+print(freq_SNR_EMRI.shape,h_SNR_EMRI.shape)
 def SNR_EMRI_1(paras,PSD,figure_file=None,**kwargs):
-    """ 
-    Return 2D array of SNR for different parameters
 
-    Parameters:
-    -----------
-    Armlength: L
-    L1: float
-        lower bound for L
-    L2: float
-        upper bound for L
-    dL: float
-        step size for L
-    wavelength: l
-    l1: float
-        lower bound for l
-    l2: float            
-        upper bound for l    
-    dl: float
-        step size for l
-    """
     L=paras[0]
     l=paras[1]
     

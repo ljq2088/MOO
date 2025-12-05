@@ -11,17 +11,8 @@ import matplotlib.pyplot as plt
 from scipy.fftpack import fft, ifft,fftfreq
 import math
 from scipy.signal.windows import tukey
-from waveform.EMRI_waveform import *
+from waveform.binary_waveform import *
 
-
-
-#参数范围
-L1=5.0*10**8
-L2=10.0*10**9
-dL=5.0*10**8
-l1=200.0
-l2=1200.0
-dl=100.0
 #红移范围
 z1=0.001
 z2=4
@@ -36,52 +27,34 @@ log_z1=np.log(z1)
 log_z2=np.log(z2)
 dlog_z=0.5
 
-SNR_threshold=config.SNR_threshold_EMRI
+SNR_threshold=config.SNR_threshold_binary
+import sys
+sys.path.append('/home/ljq/code/MOO')
+sys.path.append('/home/ljq/code/MOO/Object')
+from redshift.binary.para_rb import *
 
-def SNR_L_l(L,l,z):
-    
-    
-    q=1e-4#mass ratio
-    
-    
-    # parameters
-    M = M_final
-    mu=M_final*q
-    p0 = 12.0
-    e0 = 0.4
-    theta = np.pi/3  # polar viewing angle
-    phi = np.pi/4  # azimuthal viewing angle
-    dt = 10
-    dist=DL(z)
-    T=0.5
-    h = few(M, mu, p0, e0, theta, phi,dist=dist, dt=dt, T=T)  
-    h=h.get()
+import os
+import matplotlib.pyplot as plt
+#%matplotlib inline
+import numpy as np
+from scipy.optimize import brentq
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.fftpack import fft, ifft,fftfreq
+import math
+from math import pi as Pi
 
-    wave1 = np.array(h)
-    f = np.array(np.arange(len(h))/dt/ len(h))  
-    #tukey_seq=np.array([tukey(i,len(h),1/8) for i in range(0,len(h))])
-    #print(len(wave1),len(tukey_seq))
-    wave1 *= tukey(len(h), 1/8)
-    waveform1 = fft(wave1)
-    waveform2 = np.column_stack((waveform1, f))
-    temp=waveform2.real*waveform2.real+waveform2.imag*waveform2.imag
-    waveform = np.sqrt(temp)
+from scipy import interpolate
 
-    fseq=waveform[1:len(waveform[:,1]),1]
-    h_f=waveform[1:len(waveform[:,0]),0]
-    df=waveform[1,1]-waveform[0,1]
 
-    # PSD=PSD_Lisa(fseq)
-    PSD=PSD_L_lambda(fseq,[L,l])
-    SNR2 = inner_prod(h_f,h_f,PSD,df)
-    return np.sqrt(SNR2)
+
 
 #准备插值的红移序列寻找阈值临界点
 # z_line=np.exp(np.arange(log_z1,log_z2,dlog_z))
 # SNR_line=np.zeros(len(z_line))
 # zseq=np.zeros((len(np.arange(L1,L2,dL)),len(np.arange(l1,l2,dl))))
 from scipy import interpolate
-def redshift_EMRI_1(paras,**kwargs):
+def redshift_binary_1(paras,**kwargs):
     L=paras[0]
     l=paras[1]
     z_line=np.exp(np.arange(log_z1,log_z2,dlog_z))
@@ -90,7 +63,7 @@ def redshift_EMRI_1(paras,**kwargs):
     
     k=0
     for k in range(len(z_line)):
-        SNR_line[k]=SNR_L_l(L,l,z_line[k])
+        SNR_line[k]=SNR_binary_redshift(L,l,z_line[k])
     cubic_interp = interpolate.interp1d(z_line, SNR_line, kind='cubic')
     f=lambda x:cubic_interp(x)-SNR_threshold
 

@@ -197,7 +197,7 @@ def PSD_L_lambda(f,paras):#[Lambda]=nm
     """
     From https://arxiv.org/pdf/1803.01944.pdf. 
     """
-    L=paras[0]
+    L=paras[0]*1e3#输入km，换算成m
     Lambda=paras[1]
     f0 = c/(2*pi*L)      
     Poms_LISA=(1.5*10**-11)**2
