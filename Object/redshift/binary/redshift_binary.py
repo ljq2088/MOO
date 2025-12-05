@@ -36,5 +36,5 @@ for i in np.arange(len(L)):
             zseq[i][j]=zeropoint
             print('done')
         
-    np.savetxt("/home/ljq/code/Multi-Obj-Opt2.0/results/redshift/binary/redshift_binary_3.txt",zseq,fmt="%50.50f",delimiter=" ")
-np.savetxt("/home/ljq/code/Multi-Obj-Opt2.0/results/redshift/binary/redshift_binary_3.txt",zseq,fmt="%50.50f",delimiter=" ")
+    np.savetxt("/home/ljq/code/MOO/results/redshift/binary/redshift_binary_3.txt",zseq,fmt="%50.50f",delimiter=" ")
+np.savetxt("/home/ljq/code/MOO/results/redshift/binary/redshift_binary_3.txt",zseq,fmt="%50.50f",delimiter=" ")

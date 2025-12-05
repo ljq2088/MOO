@@ -21,7 +21,7 @@ L2=10.0*10**9
 dL=1.0*10**8
 l1=200.0
 l2=1600.0
-dl=50.0
+dl=20.0
 #红移范围
 z1=0.001
 z2=4
@@ -54,7 +54,7 @@ def SNR_L_l(L,l,z):
     dt = 10
     dist=DL(z)
     T=0.5
-    h = few(M, mu, p0, e0, theta, phi,dist=dist, dt=dt, T=T)  
+    h = few_wf(M, mu, p0, e0, theta, phi,dist=dist, dt=dt, T=T)  
     h=h.get()
 
     wave1 = np.array(h)

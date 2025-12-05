@@ -33,7 +33,7 @@ if not os.path.exists(file_saved_path):
     dt = 10
     dist=1
     T=0.5
-    h = few(M, mu, p0, e0, theta, phi,dist=dist, dt=dt, T=T)  
+    h = few_wf(M, mu, p0, e0, theta, phi,dist=dist, dt=dt, T=T)  
     h=h.get()
     wave1 = np.array(h)
     f = np.array(np.arange(len(h))/dt/ len(h))
